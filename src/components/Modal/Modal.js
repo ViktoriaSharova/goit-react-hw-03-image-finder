@@ -1,31 +1,20 @@
-export class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
+import Modal from 'react-modal';
+import { DivOverlay, DivModal, ModalImage } from './Modal.styled';
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
+Modal.setAppElement('#root');
 
-  handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      this.props.closeModal();
-    }
-  };
-
-  handleBackdropClick = event => {
-    if (event.currentTarget === event.target) {
-      this.props.closeModal();
-    }
-  };
-
-  render() {
-    return (
-      <Overlay onClick={this.handleBackdropClick}>
-        <ModalImg>
-          <img src={this.props.modalImage} alt="modalImage" />
-        </ModalImg>
-      </Overlay>
-    );
-  }
-}
+export const ModalWindow = ({ isOpen, onClose, imageUrl }) => {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      contentLabel="Example Modal"
+    >
+          <DivOverlay>
+        <DivModal>
+          <ModalImage src={imageUrl} alt="" />
+        </DivModal>
+      </DivOverlay>
+    </Modal>
+  );
+};

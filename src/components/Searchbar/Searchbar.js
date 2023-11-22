@@ -1,3 +1,11 @@
+import {
+  HeaderSearch,
+  SearchForm,
+  SearchBtn,
+  SearchBtnLabel,
+  SearchFormInput,
+} from './Searchbar.styled';
+
 export const Searchbar = ({ onSubmit }) => {
   return (
     <HeaderSearch>

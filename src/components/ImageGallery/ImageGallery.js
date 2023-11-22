@@ -1,13 +1,16 @@
+import { ImageGalleryItem } from '../ImageGalleryItem';
+import { ItemList } from './ImageGallery.styled';
+
 export const ImageGallery = ({ findCards }) => {
   return (
     <>
-      <List>
+      <ItemList>
         {findCards.map(findCard => {
           return (
             <ImageGalleryItem key={findCard.id} imageItem={findCard} />
           );
         })}
-      </List>
+      </ItemList>
     </>
   );
 };

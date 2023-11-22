@@ -1,3 +1,8 @@
+import { Component } from "react";
+import toast, { Toaster } from 'react-hot-toast';
+import { ImageGallery } from "./ImageGallery/ImageGallery";
+import { fetchImg } from "./Api/Api";
+
 export class App extends Component {
   state = {
     images: [],
@@ -12,11 +17,11 @@ export class App extends Component {
       prevState.page !== this.state.page
     ) {
       const { query, page } = this.state;
-      const slashIndex = query.indexOf('/') + 1;
-      const trimedQuery = query.slice(slashIndex, query.length);
+      const elemIndex = query.indexOf('/') + 1;
+      const searchQuery  = query.slice(elemIndex, query.length);
       try {
         this.setState({ isloading: true });
-        const fetchedImages = await fetchImages(trimedQuery, page);
+        const fetchedImages = await fetchImg(searchQuery , page);
         this.setState(prevState => {
           return { images: [...prevState.images, ...fetchedImages.data.hits] };
         });
@@ -52,7 +57,7 @@ export class App extends Component {
         {isloading && <Loader />}
         {this.state.images.length > 0 && (
           <>
-            <ImageGallery findedImages={images} />
+            <ImageGallery findCards={images} />
             <Button onSerchClick={this.handleLoadMore} />
           </>
         )}

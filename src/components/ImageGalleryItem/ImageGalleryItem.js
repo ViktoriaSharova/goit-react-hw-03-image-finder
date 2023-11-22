@@ -1,3 +1,7 @@
+import { ModalWindow } from "components/Modal/Modal";
+import { Component } from "react";
+import { ListItem, ListItemImg } from './ImageGalleryItem.styled';
+
 export class ImageGalleryItem extends Component {
   state = {
     isModalOpen: false,
