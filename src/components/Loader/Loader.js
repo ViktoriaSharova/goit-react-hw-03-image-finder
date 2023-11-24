@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { Discuss } from 'react-loader-spinner';
 
 export class Loader extends Component {

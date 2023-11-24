@@ -1,6 +1,9 @@
 import { Component } from "react";
 import toast, { Toaster } from 'react-hot-toast';
-import { ImageGallery } from "./ImageGallery/ImageGallery";
+import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Searchbar } from './Searchbar/Searchbar';
+import { Loader } from './Loader/Loader';
+import { Button } from './Button/Button';
 import { fetchImg } from "./Api/Api";
 
 export class App extends Component {
@@ -52,18 +55,18 @@ export class App extends Component {
     render() {
     const { images, isloading } = this.state;
     return (
-      <AppWrapper>
+      <>
         <Searchbar onSubmit={this.getSearchInfo} />
         {isloading && <Loader />}
         {this.state.images.length > 0 && (
           <>
             <ImageGallery findCards={images} />
-            <Button onSerchClick={this.handleLoadMore} />
+            <Button onBtnClick={this.handleLoadMore} />
           </>
         )}
-        <GlobalStyle />
+        {/* <GlobalStyle /> */}
         <Toaster />
-      </AppWrapper>
+      </>
     );
   }
 };
